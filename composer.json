@@ -1,0 +1,18 @@
+{
+    "name": "joinww/httpclient",
+    "description": "httpclient components for get/post/put/delete request",
+    "authors": [
+        {
+            "name": "joinww",
+            "email": "wjoin@qq.com"
+        }
+    ],
+    "require": {
+    	"php": ">=5.4.0"
+    },
+    "autoload":{
+    	"psr-4":{
+    		"HttpClient":"src"
+    	}
+    }
+}
