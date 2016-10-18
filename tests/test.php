@@ -9,7 +9,7 @@ $httpClient = new HttpClient\Client();
 //$response = $httpClient->get('http://www.sogou.com/web?query=php&lkx=0&ie=utf8');
 //
 $response = $httpClient->post('http://test.monitor.com/tests/post.php',
-	array('wd'=>'php'),
-	array('st'=>1,'ad'=>1));
+	['wd'=>'php'],
+	['st'=>1,'ad'=>1]);
 
 var_dump($response->getBody());
