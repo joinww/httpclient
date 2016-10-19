@@ -2,27 +2,27 @@
 namespace HttpClient;
 
 class Response{
-	private $_body;
-	private $_httpCode;
+	private $body;
+	private $httpCode;
 
 	public function __construct($httpCode,$body){
-		$this->_httpCode = $httpCode;
-		$this->_body = $body;
+		$this->httpCode = $httpCode;
+		$this->body = $body;
 	}
 
 	public function setBody($body){
-		$this->_body = $body;
+		$this->body = $body;
 	}
 
 	public function getBody(){
-		return $this->_body;
+		return $this->body;
 	}
 
 	public function setHttpCode($httpCode){
-		$this->_httpCode = $httpCode;
+		$this->httpCode = $httpCode;
 	}
 
 	public function getHttpCode(){
-		return $this->_httpCode;
+		return $this->httpCode;
 	}
 }

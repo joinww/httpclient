@@ -2,8 +2,11 @@
 namespace HttpClient;
 
 class BaseConn{
-	private $_url;
-	private $_request;
+	/**
+	 * 请求对象
+	 * @var Request
+	 */
+	private $request;
 
 	/**
 	 * 超时时间，默认5s
@@ -12,11 +15,11 @@ class BaseConn{
 	const USERAGENT = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)";
 
 	public function setRequest($request){
-		$this->_request = $request;
+		$this->request = $request;
 	}
 
 	public function getRequest(){
-		return $this->_request;
+		return $this->request;
 	}
 
 	/**
@@ -25,7 +28,7 @@ class BaseConn{
 	 */
 	public function request(){
 		try{
-			$ch = curl_init($this->_request->getUrl());
+			$ch = curl_init($this->request->getUrl());
 			/**
 			 * 启用后对FTP传输使用ASCII模式。对于LDAP，它检索纯文本信息而非HTML。
 			 * 在Windows系统上，系统不会把STDOUT设置成binary模式。
@@ -47,9 +50,9 @@ class BaseConn{
 			curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,FALSE);
 
 			
-			if($postType = $this->_request->getPostType()){
+			if($postType = $this->request->getPostType()){
 				curl_setopt($ch,CURLOPT_POST,TRUE);
-				curl_setopt($ch,CURLOPT_POSTFIELDS,$this->_request->getQueryData());
+				curl_setopt($ch,CURLOPT_POSTFIELDS,$this->request->getQueryData());
 			}
 
 			/**
@@ -57,7 +60,7 @@ class BaseConn{
 			 * 多个cookie用分号分隔，分号后带一个空格(例如， "fruit=apple; colour=red")。
 			 * @var string
 			 */
-			if($cookie = $this->_request->getCookie())
+			if($cookie = $this->request->getCookie())
 				curl_setopt($ch,CURLOPT_COOKIE,$cookie);
 
 			/**
@@ -65,7 +68,7 @@ class BaseConn{
 			 * 使用如下的形式的数组进行设置： array('Content-type: text/plain', 'Content-length: 100')
 			 * @var array
 			 */
-			if($header = $this->_request->getHeader())
+			if($header = $this->request->getHeader())
 				curl_setopt($ch,CURLOPT_HTTPHEADER,$header);
 			var_dump($header);
 

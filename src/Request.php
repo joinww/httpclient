@@ -6,24 +6,24 @@ class Request{
 	 * 请求数据
 	 * @var string
 	 */
-	private $_queryData = null;
+	private $queryData = null;
 	/**
 	 * 是否POST请求
 	 * true：post 默认
 	 * false：get
 	 * @var bool
 	 */
-	private $_postType = false;
+	private $postType = false;
 
-	private $_url;
+	private $url;
 
-	private $_cookie = null;
+	private $cookie = null;
 
 	/**
 	 * [$_header description]
 	 * @var Array
 	 */
-	private $_header = array('Expect:');
+	private $header = array('Expect:');
 
 	public function __construct(){
 
@@ -31,30 +31,30 @@ class Request{
 
 	public function setQueryData($queryData){
 		if(is_array($queryData)){
-			$this->_queryData = http_build_query($queryData);
+			$this->queryData = http_build_query($queryData);
 		}else{
-			$this->_queryData = $queryData;
+			$this->queryData = $queryData;
 		}
 	}
 
 	public function getQueryData(){
-		return $this->_queryData;
+		return $this->queryData;
 	}
 
 	public function setPostType($postType){
-		$this->_postType = $postType;
+		$this->postType = $postType;
 	}
 
 	public function getPostType(){
-		return $this->_postType;
+		return $this->postType;
 	}
 
 	public function getUrl(){
-		return $this->_url;
+		return $this->url;
 	}
 
 	public function setUrl($url){
-		$this->_url = $url;
+		$this->url = $url;
 	}
 
 	public function setCookie($cookie){
@@ -63,22 +63,22 @@ class Request{
 			foreach ($cookie as $key => $value) {
 				$_c .= "$key=$value; ";
 			}
-			$this->_cookie = $_c;
+			$this->cookie = $_c;
 		}else{
-			$this->_cookie = $cookie;	
+			$this->cookie = $cookie;	
 		}		
 	}
 
 	public function getCookie(){
-		return $this->_cookie;
+		return $this->cookie;
 	}
 
 	public function setHeader($header){		
-		$this->_header = array_merge($this->_header,$header);
+		$this->header = array_merge($this->header,$header);
 	}
 
 	public function getHeader(){
-		return $this->_header;
+		return $this->header;
 	}
 
 }
