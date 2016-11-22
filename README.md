@@ -8,10 +8,15 @@
 ##### require_once 'path/vendor/autoload.php';
 
 ##### $httpClient = new HttpClient\Client();
-##### $response = $httpClient->get('https://www.baidu.com/s?wd=php');
-##### var_dump($response);
 
-##### //$httpClient->post($url,$params,$cookie);
-##### $response = $httpClient->post('http://test.monitor.com/tests/post.php',['wd'=>'php'],['st'=>1,'ad'=>1]);
+##### $url = 'https://www.baidu.com/s?wd=php';
+##### $response = $httpClient->get($url);
+
+##### var_dump($response->getBody());
+
+##### $url = 'http://127.0.0.1/tests/post.php';
+##### $params = ['wd'='php'];
+##### $cookies = ['st'=>1,'ad'=>1];
+##### $response = $httpClient->post($url,$params,$cookies);
 
 ##### var_dump($response->getBody());
